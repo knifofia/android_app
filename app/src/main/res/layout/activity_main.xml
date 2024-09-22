@@ -23,7 +23,7 @@
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
         android:layout_height="97dp"
-        android:max="10"
+        android:max="20"
         android:progress="3"
         app:layout_constraintBottom_toTopOf="@+id/rollButton"
         app:layout_constraintEnd_toEndOf="parent"
