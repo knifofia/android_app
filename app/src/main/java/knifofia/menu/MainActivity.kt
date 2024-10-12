@@ -1,5 +1,6 @@
 package knifofia.menu
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
@@ -29,6 +30,16 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener {
             val rand = Random.nextInt(seekBar.progress)+1
             resultsTextView.text = rand.toString()
+        }
+
+        this.initWhipActivityButton()
+    }
+
+    private fun initWhipActivityButton() {
+        val btnWhipActivity = findViewById<Button>(R.id.btnWhipActivity)
+        btnWhipActivity.setOnClickListener {
+            val intent = Intent(this, WhipActivity::class.java)
+            startActivity(intent)
         }
     }
 }
