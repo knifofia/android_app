@@ -1,11 +1,11 @@
 package knifofia.menu
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,7 +28,8 @@ class WhipActivity : AppCompatActivity() {
         }
 
         this.playSound()
-        this.initShakeListner()
+        this.initShakeListener()
+        this.initClickListener()
     }
 
     override fun onDestroy() {
@@ -38,7 +39,7 @@ class WhipActivity : AppCompatActivity() {
         manager.unregisterListener(detector)
     }
 
-    private fun initShakeListner(){
+    private fun initShakeListener(){
         manager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)!!
         detector = ShakeDetector()
@@ -46,6 +47,13 @@ class WhipActivity : AppCompatActivity() {
             this.playSound()
         }
         manager.registerListener(detector, sensor, SensorManager.SENSOR_DELAY_UI)
+    }
+
+    private fun initClickListener() {
+        val btnWhipActivity = findViewById<View>(R.id.main)
+        btnWhipActivity.setOnClickListener {
+            this.playSound()
+        }
     }
 
     private fun playSound() {
